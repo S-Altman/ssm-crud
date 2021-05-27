@@ -2,15 +2,15 @@
   Created by IntelliJ IDEA.
   User: S.Altman
   Date: 2021/5/27
-  Time: 21:37
+  Time: 21:32
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>员工列表</title>
 </head>
 <body>
-    <a href="emps">查询所有员工</a>
+    <h1>success</h1>
 </body>
 </html>

@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -25,12 +27,14 @@ public class EmployeeMapperTest {
 
     @Test
     public void listEmployees() {
+        List<Employee> employeeList = mapper.listEmployees();
+        System.out.println(employeeList);
     }
 
     @Test
     public void insertEmployee() {
         Employee employee = new Employee();
-        employee.setName("大d");
+        employee.setName("aa");
         employee.setEmail("dad@qq.com");
         employee.setGender("男");
         employee.setDepartment(new Department(1, "开发部"));
@@ -39,6 +43,7 @@ public class EmployeeMapperTest {
 
     @Test
     public void deleteEmployeeById() {
+        mapper.deleteEmployeeById(2);
     }
 
     @Test
