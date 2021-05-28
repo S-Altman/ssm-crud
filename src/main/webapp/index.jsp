@@ -188,7 +188,7 @@
 </div>
 <script type="text/javascript">
 
-    var totalRecord, currentPage, totalPages;
+    var totalRecord, currentPage;
     //1、页面加载完成以后，直接去发送ajax请求,要到分页数据
     $(function () {
         //去首页
@@ -258,7 +258,6 @@
             result.extend.pageInfo.pages + "页,总" +
             result.extend.pageInfo.total + "条记录");
         totalRecord = result.extend.pageInfo.total;
-        totalPages = result.extend.pageInfo.pages;
         currentPage = result.extend.pageInfo.pageNum;
     }
 
@@ -456,7 +455,7 @@
 
                     //2、来到最后一页，显示刚才保存的数据
                     //发送ajax请求显示最后一页数据即可
-                    to_page(totalPages);
+                    to_page(totalRecord);
                 } else {
                     //显示失败信息
                     //console.log(result);
