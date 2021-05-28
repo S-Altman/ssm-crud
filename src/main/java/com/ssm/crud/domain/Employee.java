@@ -10,6 +10,16 @@ public class Employee implements Serializable {
     private String email;
     private Department department;
 
+    public Employee(){}
+
+    public Employee(Integer id, String name, String gender, String email, Department department) {
+        this.id = id;
+        this.name = name;
+        this.gender = gender;
+        this.email = email;
+        this.department = department;
+    }
+
     public Integer getId() {
         return id;
     }

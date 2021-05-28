@@ -20,7 +20,7 @@ public interface EmployeeMapper {
             @Result(column = "email", property = "email"),
             @Result(column = "d_id", property = "department",
                     one = @One(select = "com.ssm.crud.mapper.DepartmentMapper.getDepartmentById",
-                    fetchType = FetchType.LAZY))
+                    fetchType = FetchType.EAGER))
         })
     Employee getEmployeeById(Integer id);
 
