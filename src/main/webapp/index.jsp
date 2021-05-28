@@ -93,7 +93,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">empName</label>
                         <div class="col-sm-10">
-                            <input type="text" name="empName" class="form-control" id="empName_add_input"
+                            <input type="text" name="name" class="form-control" id="empName_add_input"
                                    placeholder="empName">
                             <span class="help-block"></span>
                         </div>
@@ -110,10 +110,10 @@
                         <label class="col-sm-2 control-label">gender</label>
                         <div class="col-sm-10">
                             <label class="radio-inline">
-                                <input type="radio" name="gender" id="gender1_add_input" value="M" checked="checked"> 男
+                                <input type="radio" name="gender" id="gender1_add_input" value="男" checked="checked">男
                             </label>
                             <label class="radio-inline">
-                                <input type="radio" name="gender" id="gender2_add_input" value="F"> 女
+                                <input type="radio" name="gender" id="gender2_add_input" value="女"> 女
                             </label>
                         </div>
                     </div>
@@ -121,7 +121,7 @@
                         <label class="col-sm-2 control-label">deptName</label>
                         <div class="col-sm-4">
                             <!-- 部门提交部门id即可 -->
-                            <select class="form-control" name="dId">
+                            <select class="form-control" name="department.id">
                             </select>
                         </div>
                     </div>
@@ -188,7 +188,7 @@
 </div>
 <script type="text/javascript">
 
-    var totalRecord, currentPage;
+    var totalRecord, currentPage, totalPages;
     //1、页面加载完成以后，直接去发送ajax请求,要到分页数据
     $(function () {
         //去首页
@@ -258,6 +258,7 @@
             result.extend.pageInfo.pages + "页,总" +
             result.extend.pageInfo.total + "条记录");
         totalRecord = result.extend.pageInfo.total;
+        totalPages = result.extend.pageInfo.pages;
         currentPage = result.extend.pageInfo.pageNum;
     }
 
@@ -455,7 +456,7 @@
 
                     //2、来到最后一页，显示刚才保存的数据
                     //发送ajax请求显示最后一页数据即可
-                    to_page(totalRecord);
+                    to_page(totalPages);
                 } else {
                     //显示失败信息
                     //console.log(result);

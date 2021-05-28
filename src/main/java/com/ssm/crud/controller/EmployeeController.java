@@ -36,4 +36,11 @@ public class EmployeeController {
         return Msg.success().add("pageInfo", pageInfo);
     }
 
+    @RequestMapping(value = "/emp", method = RequestMethod.POST)
+    @ResponseBody
+    public Msg saveEmp(Employee emp){
+        employeeService.insertEmployee(emp);
+        return Msg.success();
+    }
+
 }
