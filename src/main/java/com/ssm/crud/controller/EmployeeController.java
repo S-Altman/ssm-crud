@@ -85,8 +85,7 @@ public class EmployeeController {
 
     @RequestMapping(value = "/emp/{id}", method = RequestMethod.PUT)
     @ResponseBody
-    public Msg updateEmp(@PathVariable("id") Integer id, Employee employee){
-        employee.setId(id);
+    public Msg updateEmp(Employee employee){
         employeeService.updateEmployeeWithoutName(employee);
         System.out.println(employee);
         return Msg.success().add("emp", employee);
