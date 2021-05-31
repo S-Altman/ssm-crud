@@ -38,4 +38,15 @@ public class EmployeeServiceImpl implements IEmployeeService {
     public void updateEmployee(Employee employee) {
         employeeMapper.updateEmployee(employee);
     }
+
+    @Override
+    public void updateEmployeeWithoutName(Employee employee) {
+        employeeMapper.updateEmployeeWithoutName(employee);
+    }
+
+    @Override
+    public boolean checkEmp(String empName) {
+        Employee employee = employeeMapper.getEmployeeByName(empName);
+        return employee == null;
+    }
 }

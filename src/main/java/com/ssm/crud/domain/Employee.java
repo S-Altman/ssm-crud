@@ -1,13 +1,27 @@
 package com.ssm.crud.domain;
 
+import org.hibernate.validator.constraints.Email;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 
 public class Employee implements Serializable {
 
     private Integer id;
+
+    @Pattern(regexp="(^[a-zA-Z0-9_-]{6,16}$)|(^[\u2E80-\u9FFF]{2,5})"
+            ,message="用户名必须是2-5位中文或者6-16位英文和数字的组合")
     private String name;
+
+    @NotNull
     private String gender;
+
+    @Email
+    //@Pattern(regexp="^([a-z0-9_\\.-]+)@([\\da-z\\.-]+)\\.([a-z\\.]{2,6})$",
+    //        message="邮箱格式不正确")
     private String email;
+
     private Department department;
 
     public Employee(){}

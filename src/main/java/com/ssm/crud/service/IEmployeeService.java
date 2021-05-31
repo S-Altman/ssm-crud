@@ -21,4 +21,7 @@ public interface IEmployeeService {
 
     void updateEmployee(Employee employee);
 
+    void updateEmployeeWithoutName(Employee employee);
+
+    boolean checkEmp(String empName);
 }

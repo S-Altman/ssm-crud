@@ -52,11 +52,11 @@
                         <label class="col-sm-2 control-label">gender</label>
                         <div class="col-sm-10">
                             <label class="radio-inline">
-                                <input type="radio" name="gender" id="gender1_update_input" value="M" checked="checked">
+                                <input type="radio" name="gender" id="gender1_update_input" value="男" checked="checked">
                                 男
                             </label>
                             <label class="radio-inline">
-                                <input type="radio" name="gender" id="gender2_update_input" value="F"> 女
+                                <input type="radio" name="gender" id="gender2_update_input" value="女"> 女
                             </label>
                         </div>
                     </div>
@@ -64,7 +64,7 @@
                         <label class="col-sm-2 control-label">deptName</label>
                         <div class="col-sm-4">
                             <!-- 部门提交部门id即可 -->
-                            <select class="form-control" name="dId">
+                            <select class="form-control" name="department.id">
                             </select>
                         </div>
                     </div>
@@ -232,11 +232,11 @@
             var editBtn = $("<button></button>").addClass("btn btn-primary btn-sm edit_btn")
                 .append($("<span></span>").addClass("glyphicon glyphicon-pencil")).append("编辑");
             //为编辑按钮添加一个自定义的属性，来表示当前员工id
-            editBtn.attr("edit-id", item.empId);
+            editBtn.attr("edit-id", item.id);
             var delBtn = $("<button></button>").addClass("btn btn-danger btn-sm delete_btn")
                 .append($("<span></span>").addClass("glyphicon glyphicon-trash")).append("删除");
             //为删除按钮添加一个自定义的属性来表示当前删除的员工id
-            delBtn.attr("del-id", item.empId);
+            delBtn.attr("del-id", item.id);
             var btnTd = $("<td></td>").append(editBtn).append(" ").append(delBtn);
             //var delBtn =
             //append方法执行完成以后还是返回原来的元素
@@ -376,7 +376,7 @@
         } else {
             show_validate_msg("#empName_add_input", "success", "");
         }
-        ;
+
 
         //2、校验邮箱信息
         var email = $("#email_add_input").val();
@@ -413,7 +413,7 @@
         //发送ajax请求校验用户名是否可用
         var empName = this.value;
         $.ajax({
-            url: "${APP_PATH}/checkuser",
+            url: "${APP_PATH}/checkemp",
             data: "empName=" + empName,
             type: "POST",
             success: function (result) {
@@ -430,12 +430,12 @@
 
     //点击保存，保存员工。
     $("#emp_save_btn").click(function () {
-        //1、模态框中填写的表单数据提交给服务器进行保存
-        //1、先对要提交给服务器的数据进行校验
+        // 1、模态框中填写的表单数据提交给服务器进行保存
+        // 1、先对要提交给服务器的数据进行校验
         if (!validate_add_form()) {
             return false;
         }
-        ;
+
         //1、判断之前的ajax用户名校验是否成功。如果成功。
         if ($(this).attr("ajax-va") == "error") {
             return false;
@@ -464,9 +464,9 @@
                         //显示邮箱错误信息
                         show_validate_msg("#email_add_input", "error", result.extend.errorFields.email);
                     }
-                    if (undefined != result.extend.errorFields.empName) {
+                    if (undefined != result.extend.errorFields.name) {
                         //显示员工名字的错误信息
-                        show_validate_msg("#empName_add_input", "error", result.extend.errorFields.empName);
+                        show_validate_msg("#empName_add_input", "error", result.extend.errorFields.name);
                     }
                 }
             }
@@ -499,10 +499,10 @@
             success: function (result) {
                 //console.log(result);
                 var empData = result.extend.emp;
-                $("#empName_update_static").text(empData.empName);
+                $("#empName_update_static").text(empData.name);
                 $("#email_update_input").val(empData.email);
                 $("#empUpdateModal input[name=gender]").val([empData.gender]);
-                $("#empUpdateModal select").val([empData.dId]);
+                $("#empUpdateModal select").val([empData.department.id]);
             }
         });
     }
