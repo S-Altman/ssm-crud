@@ -1,11 +1,10 @@
 package com.ssm.crud.mapper;
 
 import com.ssm.crud.domain.Department;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.SelectKey;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public interface DepartmentMapper {
@@ -17,5 +16,9 @@ public interface DepartmentMapper {
             @Result(column = "dept_name", property = "name")
         })
     Department getDepartmentById(Integer id);
+
+    @Select("select * from tbl_dept")
+    @ResultMap("deptMap")
+    List<Department> listDepartments();
 
 }
