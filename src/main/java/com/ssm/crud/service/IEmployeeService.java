@@ -24,4 +24,6 @@ public interface IEmployeeService {
     void updateEmployeeWithoutName(Employee employee);
 
     boolean checkEmp(String empName);
+
+    void deleteBatch(List<Integer> ids);
 }

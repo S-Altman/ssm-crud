@@ -49,4 +49,9 @@ public class EmployeeServiceImpl implements IEmployeeService {
         Employee employee = employeeMapper.getEmployeeByName(empName);
         return employee == null;
     }
+
+    @Override
+    public void deleteBatch(List<Integer> ids) {
+        employeeMapper.deleteBatch(ids);
+    }
 }

@@ -15,4 +15,9 @@
             <property name="reasonable" value="true"/>
         </plugin>
     </plugins>
+
+    <mappers>
+        <package name="com.ssm.crud.mapper"/>
+    </mappers>
+
 </configuration>

@@ -46,4 +46,5 @@ public interface EmployeeMapper {
     @ResultMap("empMap")
     Employee getEmployeeByName(String empName);
 
+    void deleteBatch(List<Integer> ids);
 }
